@@ -1,4 +1,4 @@
-import { MatrixForm } from '@/src/components/matrix/matrix-form'
+import { MatrixForm } from '@/components/Form/Matrix_form'
 
 export const User = ({session, handleSignOut}) => {
 
