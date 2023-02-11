@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { Guest } from '@/src/components/home/guest'
-import { User } from '@/src/components/home/user'
+import { Guest } from '@/components/Home/Guest'
+import { User } from '@/components/Home/User'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router';
-import Layout from '@/src/components/layout/layout';
+import Layout from '@/components/Layout/Layout';
 
 
 export default function Home() {
