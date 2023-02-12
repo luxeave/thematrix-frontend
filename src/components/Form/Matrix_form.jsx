@@ -2,11 +2,12 @@ import styles from '@/styles/Form.module.css'
 import { HiAtSymbol, HiFingerPrint } from 'react-icons/hi'
 import { useState } from 'react'
 import { useFormik } from 'formik';
-import MatrixValidate from '@/lib/matrix_validate';
+import { MatrixValidate, parseMatrixResponse } from '@/lib/matrix_validate';
 import FetchAPI from '@/lib/fetch_api';
+import React from 'react';
+require('dotenv').config()
 
 export const MatrixForm = () => {
-
     const [computed, setComputed] = useState("[2,2]")
     const formik = useFormik({
         initialValues: {
@@ -16,18 +17,6 @@ export const MatrixForm = () => {
         validate: MatrixValidate,
         onSubmit: onSubmit
     })
-
-    function parseMatrixResponse(response) {
-        try {                                
-            if (typeof response !== 'boolean') {
-                return JSON.stringify(response);
-            } else {
-                return 'false';
-            }
-        } catch (error) {
-            throw new Error(error);
-        }
-    }
 
     async function onSubmit(values){
         try {
@@ -41,7 +30,7 @@ export const MatrixForm = () => {
 
             setComputed(parsed);
         }catch (error) {
-            console.log(error);
+            setComputed(error.message);
         }
     }
 
@@ -85,7 +74,7 @@ export const MatrixForm = () => {
 
                 {/* Login Button */}
                 <div className='input-button'>
-                    <button type='submit' className={styles.button}>
+                    <button data-testid="compute-button" type='submit' className={styles.button}>
                         Compute
                     </button>
                 </div>

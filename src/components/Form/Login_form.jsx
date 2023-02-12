@@ -6,6 +6,7 @@ import LoginValidate from '@/lib/login_validate';
 import { useRouter } from 'next/router';
 import FetchAPI from '@/lib/fetch_api';
 import Cookies from 'js-cookie'
+import React from 'react';
 
 export const LoginForm = () => {
 
@@ -42,14 +43,14 @@ export const LoginForm = () => {
                 router.push('/');
             }
         } catch (error) {
-            setError(error);
+            setError(error.message);
         }
     }
 
     return (
         <section className="w-500 mx-auto flex-col gap-10">
             <div className='title text-center'>
-                <h1 className='block w-700 text-gray-800 text-4xl font-bold py-10'>Login</h1>
+                <h1 className='block w-700 text-gray-800 text-4xl font-bold py-10'>Sign In</h1>
             </div>
 
             {/* Login Form */}
